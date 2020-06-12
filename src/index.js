@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./components/app/app.jsx";
 
 const Settings = {
-  ERRORS_COUNT: 6,
+  ERRORS_COUNT: 1000,
 };
 
 ReactDOM.render(
