@@ -1,8 +1,8 @@
 {
-  "setupFiles": ["<rootDir>/src/setup-tests.js"],
+  "setupFiles": ["./src/setup-tests.js"],
   "testRegex": "/*.test.js$",
   "collectCoverage": true,
-  "coverageReporters": ["lcov"],
+  "coverageReporters": ["lcov", "text"],
   "coverageDirectory": "test-coverage",
   "coverageThreshold": {
    "global": {
