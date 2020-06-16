@@ -1,4 +1,5 @@
-// import PropTypes from "prop-types";
+import {GameType} from "../../const.js";
+import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
 
 export default class ArtistQuestionScreen extends PureComponent {
@@ -7,6 +8,9 @@ export default class ArtistQuestionScreen extends PureComponent {
   }
 
   render() {
+    const {onAnswer, question} = this.props;
+    const {answers, song} = question;
+
     return (
       <section className="game game--artist">
         <header className="game__header">
@@ -16,7 +20,8 @@ export default class ArtistQuestionScreen extends PureComponent {
           </a>
 
           <svg xmlns="http://www.w3.org/2000/svg" className="timer" viewBox="0 0 780 780">
-            <circle className="timer__line" cx="390" cy="390" r="370" style="filter: url(#blur); transform: rotate(-90deg) scaleY(-1); transform-origin: center" />
+            <circle className="timer__line" cx="390" cy="390" r="370"
+              style={{filter: `url(#blur)`, transform: `rotate(-90deg) scaleY(-1)`, transformOrigin: `center`}} />
           </svg>
 
           <div className="game__mistakes">
@@ -32,38 +37,48 @@ export default class ArtistQuestionScreen extends PureComponent {
             <div className="track">
               <button className="track__button track__button--play" type="button"></button>
               <div className="track__status">
-                <audio></audio>
+                <audio src={song.src}></audio>
               </div>
             </div>
           </div>
 
           <form className="game__artist">
-            <div className="artist">
-              <input className="artist__input visually-hidden" type="radio" name="answer" value="artist-1" id="answer-1"/>
-              <label className="artist__name" htmlFor="answer-1">
-                <img className="artist__picture" src="http://placehold.it/134x134" alt="Пелагея"/>
-                Пелагея
-              </label>
-            </div>
-
-            <div className="artist">
-              <input className="artist__input visually-hidden" type="radio" name="answer" value="artist-2" id="answer-2"/>
-              <label className="artist__name" htmlFor="answer-2">
-                <img className="artist__picture" src="http://placehold.it/134x134" alt="Пелагея"/>
-                Краснознаменная дивизия имени моей бабушки
-              </label>
-            </div>
-
-            <div className="artist">
-              <input className="artist__input visually-hidden" type="radio" name="answer" value="artist-3" id="answer-3"/>
-              <label className="artist__name" htmlFor="answer-3">
-                <img className="artist__picture" src="http://placehold.it/134x134" alt="Пелагея"/>
-                Lorde
-              </label>
-            </div>
+            {answers.map((answer, i) => (
+              <div className="artist" key={answer.artist}>
+                <input className="artist__input visually-hidden"
+                  type="radio"
+                  name="answer"
+                  value={`answer-${i}`}
+                  id={`answer-${i}`}
+                  onChange={(evt) => {
+                    evt.preventDefault();
+                    onAnswer(question, answer);
+                  }}
+                />
+                <label className="artist__name" htmlFor={`answer-${i}`}>
+                  <img className="artist__picture" src={answer.picture} alt={`answer-${i}`}/>
+                  {answer.artist}
+                </label>
+              </div>
+            ))}
           </form>
         </section>
       </section>
     );
   }
 }
+
+ArtistQuestionScreen.propTypes = {
+  onAnswer: PropTypes.func.isRequired,
+  question: PropTypes.shape({
+    answers: PropTypes.arrayOf(PropTypes.shape({
+      artist: PropTypes.string.isRequired,
+      picture: PropTypes.string.isRequired,
+    })).isRequired,
+    song: PropTypes.shape({
+      artist: PropTypes.string.isRequired,
+      src: PropTypes.string.isRequired,
+    }).isRequired,
+    type: PropTypes.oneOf([GameType.ARTIST, GameType.GENRE]).isRequired,
+  }).isRequired,
+};
