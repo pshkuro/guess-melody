@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
 
 export default class ArtistQuestionScreen extends PureComponent {
