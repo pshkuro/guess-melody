@@ -71,6 +71,7 @@ describe(`GenreQuestionScreen`, () => {
     form.simulate(`submit`, {preventDefault() {}});
 
     expect(onAnswer).toHaveBeenCalledTimes(1);
+    // transmitted data have true structure
     expect(onAnswer.mock.calls[0][0]).toMatchObject(question);
     expect(onAnswer.mock.calls[0][1]).toMatchObject(userAnswer);
 

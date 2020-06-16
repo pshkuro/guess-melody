@@ -24,12 +24,12 @@ export default class App extends PureComponent {
           <Route exact path="/">
             {this._renderGameScreen()}
           </Route>
-          <Route exact path="/dev-artist">
+          <Route exact path="/artist">
             <ArtistQuestionScreen
               question={questions[1]}
               onAnswer={() => {}}/>
           </Route>
-          <Route exact path="/dev-genre">
+          <Route exact path="/genre">
             <GenreQuestionScreen
               question={questions[0]}
               onAnswer={() => {}}/>
