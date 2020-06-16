@@ -1,6 +1,6 @@
-// import ArtistQuestionScreen from "../artist-question-screen/artist-question-screen.jsx";
+import ArtistQuestionScreen from "../artist-question-screen/artist-question-screen.jsx";
 import {GameType} from "../../const";
-// import GenreQuestionScreen from "../genre-question-screen/genre-question-screen";
+import GenreQuestionScreen from "../genre-question-screen/genre-question-screen.jsx";
 import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
@@ -17,6 +17,7 @@ export default class App extends PureComponent {
 
   render() {
     const {questions} = this.props;
+
     return (
       <BrowserRouter>
         <Switch>
@@ -24,12 +25,12 @@ export default class App extends PureComponent {
             {this._renderGameScreen()}
           </Route>
           <Route exact path="/dev-artist">
-            <ArtistQuestionScreen 
+            <ArtistQuestionScreen
               question={questions[1]}
               onAnswer={() => {}}/>
           </Route>
           <Route exact path="/dev-genre">
-            <GenreQuestionScreen 
+            <GenreQuestionScreen
               question={questions[0]}
               onAnswer={() => {}}/>
           </Route>
