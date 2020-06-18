@@ -90,18 +90,18 @@ exports[`Render ArtistQuestionScreen 1`] = `
       >
         <input
           className="artist__input visually-hidden"
-          id="answer-0"
+          id="answer-8879"
           name="answer"
           onChange={[Function]}
           type="radio"
-          value="answer-0"
+          value="answer-8879"
         />
         <label
           className="artist__name"
-          htmlFor="answer-0"
+          htmlFor="answer-8879"
         >
           <img
-            alt="answer-0"
+            alt="answer-8879"
             className="artist__picture"
             src="https://api.adorable.io/avatars/128/0"
           />
@@ -113,18 +113,18 @@ exports[`Render ArtistQuestionScreen 1`] = `
       >
         <input
           className="artist__input visually-hidden"
-          id="answer-1"
+          id="answer-90"
           name="answer"
           onChange={[Function]}
           type="radio"
-          value="answer-1"
+          value="answer-90"
         />
         <label
           className="artist__name"
-          htmlFor="answer-1"
+          htmlFor="answer-90"
         >
           <img
-            alt="answer-1"
+            alt="answer-90"
             className="artist__picture"
             src="https://api.adorable.io/avatars/128/1"
           />
@@ -136,18 +136,18 @@ exports[`Render ArtistQuestionScreen 1`] = `
       >
         <input
           className="artist__input visually-hidden"
-          id="answer-2"
+          id="answer-122"
           name="answer"
           onChange={[Function]}
           type="radio"
-          value="answer-2"
+          value="answer-122"
         />
         <label
           className="artist__name"
-          htmlFor="answer-2"
+          htmlFor="answer-122"
         >
           <img
-            alt="answer-2"
+            alt="answer-122"
             className="artist__picture"
             src="https://api.adorable.io/avatars/128/2"
           />

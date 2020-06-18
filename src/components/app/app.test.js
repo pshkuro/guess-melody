@@ -13,15 +13,19 @@ const questions = [
     answers: [{
       src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
       genre: `rock`,
+      id: 1212,
     }, {
       src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
       genre: `blues`,
+      id: 89,
     }, {
       src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
       genre: `jazz`,
+      id: 343434,
     }, {
       src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
       genre: `rock`,
+      id: 1212,
     }],
   }, {
     type: `artist`,
@@ -32,12 +36,15 @@ const questions = [
     answers: [{
       picture: `https://api.adorable.io/avatars/128/1`,
       artist: `John Snow`,
+      id: 9090,
     }, {
       picture: `https://api.adorable.io/avatars/128/2`,
       artist: `Jack Daniels`,
+      id: 43444,
     }, {
       picture: `https://api.adorable.io/avatars/128/3`,
       artist: `Jim Beam`,
+      id: 908,
     }],
   },
 ];

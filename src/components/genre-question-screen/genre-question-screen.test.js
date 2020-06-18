@@ -8,24 +8,30 @@ const question = {
   answers: [{
     src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
     genre: `rock`,
+    id: 11,
   }, {
     src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
     genre: `blues`,
+    id: 33,
   }, {
     src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
     genre: `jazz`,
+    id: 89,
   }, {
     src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
     genre: `rock`,
+    id: 12,
   }]
 };
 
 
 it(`Render GenreQuestionScreen`, () => {
+  const onAnswerMock = jest.fn();
+
   const tree = renderer
   .create(
       <GenreQuestionScreen
-        onAnswer={() => {}}
+        onAnswer={onAnswerMock}
         question={question}
       />
   )

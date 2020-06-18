@@ -1,4 +1,4 @@
-import {GameType} from "../../const.js";
+import {GameType} from "../../constants/game.js";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -38,20 +38,20 @@ export default function ArtistQuestionScreen(props) {
         </div>
 
         <form className="game__artist">
-          {userAnswer.map((answer, i) => (
+          {userAnswer.map((answer) => (
             <div className="artist" key={answer.artist}>
               <input className="artist__input visually-hidden"
                 type="radio"
                 name="answer"
-                value={`answer-${i}`}
-                id={`answer-${i}`}
+                value={`answer-${answer.id}`}
+                id={`answer-${answer.id}`}
                 onChange={(evt) => {
                   evt.preventDefault();
                   onAnswer(question, answer);
                 }}
               />
-              <label className="artist__name" htmlFor={`answer-${i}`}>
-                <img className="artist__picture" src={answer.picture} alt={`answer-${i}`}/>
+              <label className="artist__name" htmlFor={`answer-${answer.id}`}>
+                <img className="artist__picture" src={answer.picture} alt={`answer-${answer.id}`}/>
                 {answer.artist}
               </label>
             </div>
@@ -68,6 +68,7 @@ ArtistQuestionScreen.propTypes = {
     answers: PropTypes.arrayOf(PropTypes.shape({
       artist: PropTypes.string.isRequired,
       picture: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
     })).isRequired,
     song: PropTypes.shape({
       artist: PropTypes.string.isRequired,

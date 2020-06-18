@@ -1,4 +1,4 @@
-import {GameType} from "../../const.js";
+import {GameType} from "../../constants/game.js";
 import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
 
@@ -10,6 +10,7 @@ export default class GenreQuestionScreen extends PureComponent {
       answers: [false, false, false, false]
     };
   }
+
 
   render() {
     const {onAnswer, question} = this.props;
@@ -46,7 +47,7 @@ export default class GenreQuestionScreen extends PureComponent {
             }}>
 
             {answers.map((answer, i) => (
-              <div className="track" key={`${i}-${answer.src}`}>
+              <div className="track" key={`${answer.id}-${answer.src}`}>
                 <button className="track__button track__button--play" type="button"></button>
                 <div className="track__status">
                   <audio src={answer.src}></audio>
@@ -56,17 +57,13 @@ export default class GenreQuestionScreen extends PureComponent {
                     className="game__input visually-hidden"
                     type="checkbox"
                     name="answer"
-                    value={`answer-${i}`}
-                    id={`answer-${i}`}
+                    value={`answer-${answer.id}`}
+                    id={`answer-${answer.id}`}
                     checked={userAnsewrs[i]}
                     onChange={(evt) => {
-                      const value = evt.target.checked;
-
-                      this.setState({
-                        answers: [...userAnsewrs.slice(0, i), value, ...userAnsewrs.slice(i + 1)],
-                      });
+                      this._onChange(evt, i);
                     }}/>
-                  <label className="game__check" htmlFor={`answer-${i}`}>Отметить</label>
+                  <label className="game__check" htmlFor={`answer-${answer.id}`}>Отметить</label>
                 </div>
               </div>
             ))}
@@ -78,6 +75,15 @@ export default class GenreQuestionScreen extends PureComponent {
     );
   }
 
+  _onChange(evt, i) {
+    const {answers: userAnsewrs} = this.state;
+    const value = evt.target.checked;
+
+    this.setState({
+      answers: [...userAnsewrs.slice(0, i), value, ...userAnsewrs.slice(i + 1)],
+    });
+  }
+
 }
 
 GenreQuestionScreen.propTypes = {
@@ -87,6 +93,7 @@ GenreQuestionScreen.propTypes = {
         PropTypes.shape({
           src: PropTypes.string.isRequired,
           genre: PropTypes.string.isRequired,
+          id: PropTypes.number.isRequired,
         })
     ).isRequired,
     genre: PropTypes.string.isRequired,

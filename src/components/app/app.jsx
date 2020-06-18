@@ -1,5 +1,5 @@
 import ArtistQuestionScreen from "../artist-question-screen/artist-question-screen.jsx";
-import {GameType} from "../../const";
+import {GameType} from "../../constants/game";
 import GenreQuestionScreen from "../genre-question-screen/genre-question-screen.jsx";
 import PropTypes from "prop-types";
 import React, {PureComponent} from "react";

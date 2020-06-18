@@ -10,18 +10,22 @@ const mock = {
       {
         src: `path`,
         genre: `rock`,
+        id: 545454545,
       },
       {
         src: `path`,
         genre: `jazz`,
+        id: 8,
       },
       {
         src: `path`,
         genre: `jazz`,
+        id: 34,
       },
       {
         src: `path`,
         genre: `blues`,
+        id: 12,
       },
     ],
   },
