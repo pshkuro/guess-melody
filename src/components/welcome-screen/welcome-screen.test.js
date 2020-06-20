@@ -8,11 +8,13 @@ const Settings = {
 };
 
 it(`Render WelcomeScreen`, () => {
+  const onWelcomeButtonClickMock = jest.fn();
+
   const tree = renderer
   .create(
       <WelcomeScreen
         errorsCount={Settings.errorsCount}
-        onWelcomeButtonClick={() => {}}
+        onWelcomeButtonClick={onWelcomeButtonClickMock}
       />
   )
   .toJSON();

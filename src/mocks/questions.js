@@ -1,31 +1,25 @@
-import App from "./app.jsx";
-import React from "react";
-import renderer from "react-test-renderer";
+const AVATAR_URL = `https://api.adorable.io/avatars/128`;
 
-const Settings = {
-  errorsCount: 105,
-};
-
-const questions = [
+export const questions = [
   {
     type: `genre`,
     genre: `rock`,
     answers: [{
       src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
       genre: `rock`,
-      id: 1212,
+      id: Math.random(),
     }, {
       src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
       genre: `blues`,
-      id: 89,
+      id: Math.random(),
     }, {
       src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
       genre: `jazz`,
-      id: 343434,
+      id: Math.random(),
     }, {
       src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
       genre: `rock`,
-      id: 1212,
+      id: Math.random(),
     }],
   }, {
     type: `artist`,
@@ -34,29 +28,18 @@ const questions = [
       src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
     },
     answers: [{
-      picture: `https://api.adorable.io/avatars/128/1`,
+      picture: `${AVATAR_URL}/${Math.random()}`,
       artist: `John Snow`,
-      id: 9090,
+      id: Math.random(),
     }, {
-      picture: `https://api.adorable.io/avatars/128/2`,
+      picture: `${AVATAR_URL}/${Math.random()}`,
       artist: `Jack Daniels`,
-      id: 43444,
+      id: Math.random(),
     }, {
-      picture: `https://api.adorable.io/avatars/128/3`,
+      picture: `${AVATAR_URL}/${Math.random()}`,
       artist: `Jim Beam`,
-      id: 908,
+      id: Math.random(),
     }],
   },
+
 ];
-
-
-it(`Render App`, () => {
-  const tree = renderer
-  .create(<App
-    errorsCount={Settings.errorsCount}
-    questions={questions}
-  />)
-  .toJSON();
-
-  expect(tree).toMatchSnapshot();
-});
