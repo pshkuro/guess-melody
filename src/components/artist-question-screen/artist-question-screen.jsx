@@ -1,10 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {GameType} from "../../constants/game.js";
-import AudioPlayer from "../audio-player/audio-player.jsx";
 
-export default function ArtistQuestionScreen(props) {
-  const {onAnswer, question} = props;
+
+export default function ArtistQuestionScreen({onAnswer, question, renderPlayer}) {
   const {answers: userAnswer, song} = question;
 
   return (
@@ -12,9 +11,8 @@ export default function ArtistQuestionScreen(props) {
       <h2 className="game__title">Кто исполняет эту песню?</h2>
       <div className="game__track">
         <div className="track">
-          <AudioPlayer
-            isPlaying={true}
-            src={song.src} />
+          {renderPlayer(song.src, 0)}
+
         </div>
       </div>
 
@@ -40,6 +38,7 @@ export default function ArtistQuestionScreen(props) {
       </form>
     </section>
   );
+
 }
 
 ArtistQuestionScreen.propTypes = {
@@ -56,4 +55,5 @@ ArtistQuestionScreen.propTypes = {
     }).isRequired,
     type: PropTypes.oneOf([GameType.ARTIST, GameType.GENRE]).isRequired,
   }).isRequired,
+  renderPlayer: PropTypes.func.isRequired,
 };

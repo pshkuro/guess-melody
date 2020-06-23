@@ -1,20 +1,20 @@
 import {GameType} from "../../constants/game.js";
 import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
-import AudioPlayer from "../audio-player/audio-player.jsx";
+
 
 export default class GenreQuestionScreen extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      answers: [false, false, false, false]
+      answers: [false, false, false, false],
     };
   }
 
 
   render() {
-    const {onAnswer, question} = this.props;
+    const {onAnswer, question, renderPlayer} = this.props;
     const {genre, answers} = question;
     const {answers: userAnsewrs} = this.state;
 
@@ -30,9 +30,8 @@ export default class GenreQuestionScreen extends PureComponent {
 
           {answers.map((answer, i) => (
             <div className="track" key={`${answer.id}-${answer.src}`}>
-              <AudioPlayer
-                isPlaying={i === 0}
-                src={answer.src}/>
+              {renderPlayer(answer.src, i)}
+
               <div className="game__answer">
                 <input
                   className="game__input visually-hidden"
@@ -79,5 +78,6 @@ GenreQuestionScreen.propTypes = {
     genre: PropTypes.string.isRequired,
     type: PropTypes.oneOf([GameType.ARTIST, GameType.GENRE]),
   }).isRequired,
+  renderPlayer: PropTypes.func.isRequired,
 };
 

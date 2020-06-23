@@ -36,11 +36,13 @@ describe(`GenreQuestionScreen`, () => {
   it(`When user answers genre question form is not sent`, () => {
     const {question} = mock;
     const onAnswer = jest.fn();
+    const renderPlayer = jest.fn();
 
     const genreQuestion = shallow(
         <GenreQuestionScreen
           question={question}
           onAnswer={onAnswer}
+          renderPlayer={renderPlayer}
         />
     );
 
@@ -59,11 +61,13 @@ describe(`GenreQuestionScreen`, () => {
     const {question} = mock;
     const userAnswer = [false, true, false, false];
     const onAnswer = jest.fn((...args) => [...args]);
+    const renderPlayer = jest.fn();
 
     const genreQuestion = shallow(
         <GenreQuestionScreen
           question={question}
-          onAnswer={onAnswer}/>
+          onAnswer={onAnswer}
+          renderPlayer={renderPlayer}/>
     );
 
     const form = genreQuestion.find(`form`);

@@ -26,12 +26,14 @@ const question = {
 
 it(`Render ArtistQuestionScreen`, () => {
   const onAnswerMock = jest.fn();
+  const renderPlayer = jest.fn();
 
   const tree = renderer
   .create(
       <ArtistQuestionScreen
         question={question}
-        onAnswer={onAnswerMock}/>,
+        onAnswer={onAnswerMock}
+        renderPlayer={renderPlayer}/>,
       {createNodeMock: () => {
         return {};
       }
