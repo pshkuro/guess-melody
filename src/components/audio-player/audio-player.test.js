@@ -10,9 +10,12 @@ const props = {
 it(`AudioPlayer render`, () => {
   const tree = renderer
   .create(
-      <AudioPlayer {...props}/>
-  )
-  .toJSON();
+      <AudioPlayer {...props}/>,
+      {
+        createNodeMock: () => {
+          return {};
+        }
+      }).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

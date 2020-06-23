@@ -31,11 +31,14 @@ it(`Render ArtistQuestionScreen`, () => {
   .create(
       <ArtistQuestionScreen
         question={question}
-        onAnswer={onAnswerMock}/>
+        onAnswer={onAnswerMock}/>,
+      {createNodeMock: () => {
+        return {};
+      }
+      }
 
-  ).toJSON();
+  );
 
-  // Add createNodeMock when Refs create
 
   expect(tree).toMatchSnapshot();
 });
