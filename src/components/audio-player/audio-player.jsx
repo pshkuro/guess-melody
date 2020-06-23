@@ -10,7 +10,7 @@ export default class AudioPlayer extends PureComponent {
 
     this.state = {
       progress: 0,
-      isLoading: false,
+      isLoading: true,
       isPlaying: props.isPlaying,
     };
   }
@@ -74,7 +74,7 @@ export default class AudioPlayer extends PureComponent {
   componentDidUpdate() {
     const audio = this._audioRef.current;
 
-    if (this.state.isPlaying) {
+    if (this.props.isPlaying) {
       audio.play();
     } else {
       audio.pause();
