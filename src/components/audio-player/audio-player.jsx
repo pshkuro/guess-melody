@@ -18,6 +18,9 @@ export default class AudioPlayer extends PureComponent {
   componentDidMount() {
     const {src} = this.props;
     const audio = this._audioRef.current;
+    if (!audio) {
+      return;
+    }
     audio.src = src;
 
     audio.oncanplaythrough = () => this.setState({

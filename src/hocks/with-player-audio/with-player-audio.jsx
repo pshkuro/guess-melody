@@ -9,7 +9,7 @@ export default function withActivePlayer(Component) {
       super(props);
 
       this.state = {
-        activePlayerId: 0,
+        activePlayerId: -1,
       };
     }
 

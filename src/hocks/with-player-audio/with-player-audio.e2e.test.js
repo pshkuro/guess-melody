@@ -20,10 +20,13 @@ const props = {
 };
 
 it(`Click on track button leads to play or pause`, () => {
+  window.HTMLMediaElement.prototype.play = () => {};
+  window.HTMLMediaElement.prototype.pause = () => {};
+
   const {question} = props;
   // eslint-disable-next-line react/prop-types
   const Component = ({renderPlayer}) => (<div>{
-    renderPlayer(question.src, question.answers[0].id)
+    renderPlayer(question.song.src, question.answers[0].id)
   }</div>);
   const WithPlayerAudio = withActivePlayer(Component);
 
@@ -34,7 +37,15 @@ it(`Click on track button leads to play or pause`, () => {
   );
 
   const audioPlayer = wrappedComponent.find(AudioPlayer).first();
+  audioPlayer.setState({isLoading: false});
   const trackButton = wrappedComponent.find(`.track__button`).first();
+
+  trackButton.simulate(`click`, {
+    preventDefault: () => {}
+  });
+
+  expect(audioPlayer.state().isPlaying).toBe(true);
+  expect(wrappedComponent.state().activePlayerId).toBeGreaterThan(-1);
 
   trackButton.simulate(`click`, {
     preventDefault: () => {}
@@ -42,3 +53,4 @@ it(`Click on track button leads to play or pause`, () => {
 
   expect(audioPlayer.state().isPlaying).toBe(false);
 });
+
