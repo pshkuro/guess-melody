@@ -29,7 +29,7 @@ export default class GenreQuestionScreen extends PureComponent {
           }}>
 
           {answers.map((answer, i) => (
-            <div className="track" key={`${answer.id}-${answer.src}`}>
+            <div className="track" key={`${answer.id}`}>
               {renderPlayer(answer.src, i)}
 
               <div className="game__answer">

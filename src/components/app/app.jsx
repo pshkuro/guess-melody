@@ -4,7 +4,7 @@ import {Switch, Route, BrowserRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer.js";
 import ArtistQuestionScreen from "../artist-question-screen/artist-question-screen.jsx";
-import {GameScreen} from "../game-screen/game-screen.jsx";
+import GameScreen from "../game-screen/game-screen.jsx";
 import {GameType} from "../../constants/game";
 import GenreQuestionScreen from "../genre-question-screen/genre-question-screen.jsx";
 import WelcomeScreen from "../welcome-screen/welcome-screen.jsx";
@@ -92,6 +92,8 @@ App.propTypes = {
 // App will be notyfied when step update and get it value
 const mapStateToProps = (state) => ({
   step: state.step,
+  questions: state.questions,
+  errorsCount: state.maxMistakes,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -99,8 +101,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreator.incrementStep());
   },
   onUserAnswer(question, answer) {
-    dispatch(ActionCreator.incrementStep());
     dispatch(ActionCreator.incrementMistake(question, answer));
+    dispatch(ActionCreator.incrementStep());
   },
 });
 

@@ -1,9 +1,12 @@
 import {extend} from "./utils.js";
 import {GameType} from "./constants/game.js";
+import {questions} from "./mocks/questions.js";
 
 const initialState = {
   mistakes: 0,
   step: -1,
+  questions,
+  maxMistakes: 3,
 };
 
 const ActionType = {
@@ -50,11 +53,23 @@ const ActionCreator = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.INCREMENT_STEP:
+      let nextStep = state.step + action.payload;
+
+      if (nextStep >= state.questions.length) {
+        return extend({}, initialState);
+      }
+
       return extend(state, { // state - old obj
-        step: state.step + action.payload, // value that changed => redux compare
+        step: nextStep, // value that changed => redux compare
       });
 
     case ActionType.INCREMENT_MISTAKES:
+      const mistakes = state.mistakes + action.payload;
+
+      if (mistakes >= state.maxMistakes) {
+        return extend({}, initialState);
+      }
+
       return extend(state, {
         mistakes: state.mistakes + action.payload,
       });

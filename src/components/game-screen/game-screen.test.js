@@ -5,7 +5,7 @@ import {GameType} from "../../constants/game.js";
 
 const props = {
   children: `<div className="children-component" />`,
-  mistakes: 3,
+  count: 3,
 };
 
 

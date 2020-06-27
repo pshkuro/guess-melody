@@ -101,6 +101,12 @@ exports[`Render App Render GenreQuestionScreen 1`] = `
       <div
         className="wrong"
       />
+      <div
+        className="wrong"
+      />
+      <div
+        className="wrong"
+      />
     </div>
   </header>
   <section
@@ -239,15 +245,15 @@ exports[`Render App Render GenreQuestionScreen 1`] = `
           <input
             checked={false}
             className="game__input visually-hidden"
-            id="answer-1212"
+            id="answer-122"
             name="answer"
             onChange={[Function]}
             type="checkbox"
-            value="answer-1212"
+            value="answer-122"
           />
           <label
             className="game__check"
-            htmlFor="answer-1212"
+            htmlFor="answer-122"
           >
             Отметить
           </label>

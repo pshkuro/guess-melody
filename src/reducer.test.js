@@ -1,9 +1,55 @@
 import {reducer, ActionType, ActionCreator} from "./reducer.js";
 
+const questions = [
+  {
+    type: `genre`,
+    genre: `rock`,
+    answers: [{
+      src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
+      genre: `rock`,
+      id: 0,
+    }, {
+      src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
+      genre: `blues`,
+      id: 1,
+    }, {
+      src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
+      genre: `jazz`,
+      id: 2,
+    }, {
+      src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
+      genre: `rock`,
+      id: 3,
+    }],
+  }, {
+    type: `artist`,
+    song: {
+      artist: `Jim Beam`,
+      src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
+    },
+    answers: [{
+      picture: `https://api.adorable.io/avatars/128/A`,
+      artist: `John Snow`,
+      id: 4,
+    }, {
+      picture: `https://api.adorable.io/avatars/128/AB`,
+      artist: `Jack Daniels`,
+      id: 5,
+    }, {
+      picture: `https://api.adorable.io/avatars/128/ABC`,
+      artist: `Jim Beam`,
+      id: 6,
+    }],
+  },
+
+];
+
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(undefined, {})).toEqual({
     step: -1,
     mistakes: 0,
+    maxMistakes: 3,
+    questions,
   });
 });
 
@@ -11,23 +57,27 @@ it(`Reducer should increment current step by a given value`, () => {
   expect(reducer({
     step: -1,
     mistakes: 0,
+    questions,
   }, {
     type: ActionType.INCREMENT_STEP,
     payload: 1,
   })).toEqual({
     step: 0,
     mistakes: 0,
+    questions,
   });
 
   expect(reducer({
     step: -1,
     mistakes: 0,
+    questions,
   }, {
     type: ActionType.INCREMENT_STEP,
     payload: 0,
   })).toEqual({
     step: -1,
     mistakes: 0,
+    questions,
   });
 });
 
