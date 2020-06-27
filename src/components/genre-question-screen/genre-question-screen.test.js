@@ -27,17 +27,19 @@ const question = {
 
 it(`Render GenreQuestionScreen`, () => {
   const onAnswerMock = jest.fn();
+  const onRenderPlayerMock = jest.fn();
 
   const tree = renderer
   .create(
       <GenreQuestionScreen
         onAnswer={onAnswerMock}
         question={question}
-      />
-  )
-  .toJSON();
-
-  // Add createNodeMock when Refs create
+        renderPlayer={onRenderPlayerMock}
+      />,
+      {createNodeMock: () => {
+        return {};
+      }
+      });
 
   expect(tree).toMatchSnapshot();
 });

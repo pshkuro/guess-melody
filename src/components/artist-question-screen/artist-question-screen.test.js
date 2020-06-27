@@ -26,16 +26,21 @@ const question = {
 
 it(`Render ArtistQuestionScreen`, () => {
   const onAnswerMock = jest.fn();
+  const renderPlayer = jest.fn();
 
   const tree = renderer
   .create(
       <ArtistQuestionScreen
         question={question}
-        onAnswer={onAnswerMock}/>
+        onAnswer={onAnswerMock}
+        renderPlayer={renderPlayer}/>,
+      {createNodeMock: () => {
+        return {};
+      }
+      }
 
-  ).toJSON();
+  );
 
-  // Add createNodeMock when Refs create
 
   expect(tree).toMatchSnapshot();
 });
