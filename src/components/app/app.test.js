@@ -1,6 +1,10 @@
 import {App} from "./app.jsx";
 import React from "react";
 import renderer from "react-test-renderer";
+import {Provider} from "react-redux";
+import configureStore from "redux-mock-store";
+
+const mockStore = configureStore([]);
 
 
 const props = {
@@ -55,41 +59,62 @@ const props = {
 
 describe(`Render App`, () => {
   it(`Render WelcomeScreen`, () => {
+    const store = mockStore({
+      mistakes: 0,
+    });
+
     const tree = renderer
-      .create(<App
-        {...props}
-        step={-1}
-      />)
+      .create(
+          <Provider store={store}>
+            <App
+              {...props}
+              step={-1}
+            />
+          </Provider>)
       .toJSON();
 
     expect(tree).toMatchSnapshot();
   });
 
   it(`Render GenreQuestionScreen`, () => {
+    const store = mockStore({
+      mistakes: 3,
+    });
+
     const tree = renderer
-      .create(<App
-        {...props}
-        step={0}
-      />, {
-        createNodeMock: () => {
-          return {};
-        }
-      })
+      .create(
+          <Provider store={store}>
+            <App
+              {...props}
+              step={0}
+            />
+          </Provider>, {
+            createNodeMock: () => {
+              return {};
+            }
+          })
       .toJSON();
 
     expect(tree).toMatchSnapshot();
   });
 
   it(`Render ArtistQuestionScreen`, () => {
+    const store = mockStore({
+      mistakes: 3,
+    });
+
     const tree = renderer
-      .create(<App
-        {...props}
-        step={1}
-      />, {
-        createNodeMock: () => {
-          return {};
-        }
-      })
+      .create(
+          <Provider store={store}>
+            <App
+              {...props}
+              step={-1}
+            />
+          </Provider>, {
+            createNodeMock: () => {
+              return {};
+            }
+          })
       .toJSON();
 
     expect(tree).toMatchSnapshot();

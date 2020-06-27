@@ -2,160 +2,55 @@
 
 exports[`Render App Render ArtistQuestionScreen 1`] = `
 <section
-  className="game game--artist"
+  className="welcome"
 >
-  <header
-    className="game__header"
+  <div
+    className="welcome__logo"
   >
-    <a
-      className="game__back"
-      href="#"
-    >
-      <span
-        className="visually-hidden"
-      >
-        Сыграть ещё раз
-      </span>
-      <img
-        alt="Угадай мелодию"
-        className="game__logo"
-        src="img/melody-logo-ginger.png"
-      />
-    </a>
-    <svg
-      className="timer"
-      viewBox="0 0 780 780"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <circle
-        className="timer__line"
-        cx="390"
-        cy="390"
-        r="370"
-        style={
-          Object {
-            "filter": "url(#blur)",
-            "transform": "rotate(-90deg) scaleY(-1)",
-            "transformOrigin": "center",
-          }
-        }
-      />
-    </svg>
-    <div
-      className="game__mistakes"
-    >
-      <div
-        className="wrong"
-      />
-      <div
-        className="wrong"
-      />
-      <div
-        className="wrong"
-      />
-    </div>
-  </header>
-  <section
-    className="game__screen"
+    <img
+      alt="Угадай мелодию"
+      height="83"
+      src="img/melody-logo.png"
+      width="186"
+    />
+  </div>
+  <button
+    className="welcome__button"
+    onClick={[Function]}
   >
-    <h2
-      className="game__title"
+    <span
+      className="visually-hidden"
     >
-      Кто исполняет эту песню?
-    </h2>
-    <div
-      className="game__track"
-    >
-      <div
-        className="track"
-      >
-        <button
-          className="track__button track__button--play"
-          disabled={true}
-          onClick={[Function]}
-          type="button"
-        />
-        <div
-          className="track__status"
-        >
-          <audio />
-        </div>
-      </div>
-    </div>
-    <form
-      className="game__artist"
-    >
-      <div
-        className="artist"
-      >
-        <input
-          className="artist__input visually-hidden"
-          id="answer-9090"
-          name="answer"
-          onChange={[Function]}
-          type="radio"
-          value="answer-9090"
-        />
-        <label
-          className="artist__name"
-          htmlFor="answer-9090"
-        >
-          <img
-            alt="answer-9090"
-            className="artist__picture"
-            src="https://api.adorable.io/avatars/128/1"
-          />
-          John Snow
-        </label>
-      </div>
-      <div
-        className="artist"
-      >
-        <input
-          className="artist__input visually-hidden"
-          id="answer-43444"
-          name="answer"
-          onChange={[Function]}
-          type="radio"
-          value="answer-43444"
-        />
-        <label
-          className="artist__name"
-          htmlFor="answer-43444"
-        >
-          <img
-            alt="answer-43444"
-            className="artist__picture"
-            src="https://api.adorable.io/avatars/128/2"
-          />
-          Jack Daniels
-        </label>
-      </div>
-      <div
-        className="artist"
-      >
-        <input
-          className="artist__input visually-hidden"
-          id="answer-908"
-          name="answer"
-          onChange={[Function]}
-          type="radio"
-          value="answer-908"
-        />
-        <label
-          className="artist__name"
-          htmlFor="answer-908"
-        >
-          <img
-            alt="answer-908"
-            className="artist__picture"
-            src="https://api.adorable.io/avatars/128/3"
-          />
-          Jim Beam
-        </label>
-      </div>
-    </form>
-  </section>
+      Начать игру
+    </span>
+  </button>
+  <h2
+    className="welcome__rules-title"
+  >
+    Правила игры
+  </h2>
+  <p
+    className="welcome__text"
+  >
+    Правила просты:
+  </p>
+  <ul
+    className="welcome__rules-list"
+  >
+    <li>
+      Нужно ответить на все вопросы.
+    </li>
+    <li>
+      Можно допустить 
+      3
+       ошибки.
+    </li>
+  </ul>
+  <p
+    className="welcome__text"
+  >
+    Удачи!
+  </p>
 </section>
 `;
 
@@ -203,12 +98,6 @@ exports[`Render App Render GenreQuestionScreen 1`] = `
     <div
       className="game__mistakes"
     >
-      <div
-        className="wrong"
-      />
-      <div
-        className="wrong"
-      />
       <div
         className="wrong"
       />

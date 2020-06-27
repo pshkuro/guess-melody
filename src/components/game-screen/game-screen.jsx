@@ -1,8 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
+import Mistakes from "../mistakes/mistakes.jsx";
 import {GameType} from "../../constants/game.js";
 
-export default function GameScreen({type, children}) {
+export function GameScreen({type, children, mistakes}) {
   return (
     <section className={`game game--${type}`}>
       <header className="game__header">
@@ -15,11 +17,7 @@ export default function GameScreen({type, children}) {
             style={{filter: `url(#blur)`, transform: `rotate(-90deg) scaleY(-1)`, transformOrigin: `center`}} />
         </svg>
 
-        <div className="game__mistakes">
-          <div className="wrong"></div>
-          <div className="wrong"></div>
-          <div className="wrong"></div>
-        </div>
+        <Mistakes count={mistakes}/>
       </header>
 
       {children}
@@ -28,11 +26,18 @@ export default function GameScreen({type, children}) {
   );
 }
 
+const mapStateToProps = (state) => ({
+  mistakes: state.mistakes,
+});
+
+export default connect(mapStateToProps)(GameScreen);
+
 GameScreen.propTypes = {
   type: PropTypes.oneOf([GameType.ARTIST, GameType.GENRE]).isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
-  ])
+  ]),
+  mistakes: PropTypes.number.isRequired,
 };
 

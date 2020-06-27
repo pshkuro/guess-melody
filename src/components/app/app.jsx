@@ -4,7 +4,7 @@ import {Switch, Route, BrowserRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer.js";
 import ArtistQuestionScreen from "../artist-question-screen/artist-question-screen.jsx";
-import GameScreen from "../game-screen/game-screen.jsx";
+import {GameScreen} from "../game-screen/game-screen.jsx";
 import {GameType} from "../../constants/game";
 import GenreQuestionScreen from "../genre-question-screen/genre-question-screen.jsx";
 import WelcomeScreen from "../welcome-screen/welcome-screen.jsx";
@@ -98,8 +98,9 @@ const mapDispatchToProps = (dispatch) => ({
   onWelcomeButtonClick() {
     dispatch(ActionCreator.incrementStep());
   },
-  onUserAnswer() {
+  onUserAnswer(question, answer) {
     dispatch(ActionCreator.incrementStep());
+    dispatch(ActionCreator.incrementMistake(question, answer));
   },
 });
 
