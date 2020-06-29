@@ -7,19 +7,19 @@ export const questions = [
     answers: [{
       src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
       genre: `rock`,
-      id: Math.random(),
+      id: 0,
     }, {
       src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
       genre: `blues`,
-      id: Math.random(),
+      id: 1,
     }, {
       src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
       genre: `jazz`,
-      id: Math.random(),
+      id: 2,
     }, {
       src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
       genre: `rock`,
-      id: Math.random(),
+      id: 3,
     }],
   }, {
     type: `artist`,
@@ -28,17 +28,17 @@ export const questions = [
       src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
     },
     answers: [{
-      picture: `${AVATAR_URL}/${Math.random()}`,
+      picture: `${AVATAR_URL}/A`,
       artist: `John Snow`,
-      id: Math.random(),
+      id: 4,
     }, {
-      picture: `${AVATAR_URL}/${Math.random()}`,
+      picture: `${AVATAR_URL}/AB`,
       artist: `Jack Daniels`,
-      id: Math.random(),
+      id: 5,
     }, {
-      picture: `${AVATAR_URL}/${Math.random()}`,
+      picture: `${AVATAR_URL}/ABC`,
       artist: `Jim Beam`,
-      id: Math.random(),
+      id: 6,
     }],
   },
 

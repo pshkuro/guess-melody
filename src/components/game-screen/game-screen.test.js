@@ -1,10 +1,11 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import GameScreen from "./game-screen.jsx";
+import {GameScreen} from "./game-screen.jsx";
 import {GameType} from "../../constants/game.js";
 
 const props = {
   children: `<div className="children-component" />`,
+  count: 3,
 };
 
 
