@@ -1,6 +1,5 @@
-import {extend} from "./utils.js";
-import {GameType} from "./constants/game.js";
-import {questions} from "./mocks/questions.js";
+import {GameType} from "../constants/game.js";
+import {questions} from "../mocks/questions.js";
 
 const initialState = {
   mistakes: 0,
@@ -40,6 +39,8 @@ const ActionCreator = {
       case GameType.GENRE:
         answerIsCorrect = isGenreAnswerCorrect(question, userAnswer);
         break;
+      default:
+        answerIsCorrect = false;
     }
 
     return {
@@ -56,10 +57,10 @@ const reducer = (state = initialState, action) => {
       let nextStep = state.step + action.payload;
 
       if (nextStep >= state.questions.length) {
-        return extend({}, initialState);
+        return Object.assign({}, initialState);
       }
 
-      return extend(state, { // state - old obj
+      return Object.assign({}, state, { // state - old obj
         step: nextStep, // value that changed => redux compare
       });
 
@@ -67,10 +68,10 @@ const reducer = (state = initialState, action) => {
       const mistakes = state.mistakes + action.payload;
 
       if (mistakes >= state.maxMistakes) {
-        return extend({}, initialState);
+        return Object.assign({}, initialState);
       }
 
-      return extend(state, {
+      return Object.assign(state, {
         mistakes: state.mistakes + action.payload,
       });
   }
