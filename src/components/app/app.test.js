@@ -53,7 +53,7 @@ const props = {
   errorsCount: 3,
   onUserAnswer: jest.fn(),
   onWelcomeButtonClick: jest.fn,
-
+  errors: 0,
 };
 
 
@@ -109,6 +109,52 @@ describe(`Render App`, () => {
             <App
               {...props}
               step={-1}
+            />
+          </Provider>, {
+            createNodeMock: () => {
+              return {};
+            }
+          })
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`Render GameOverScreen`, () => {
+    const store = mockStore({
+      mistakes: 3,
+    });
+
+    const tree = renderer
+      .create(
+          <Provider store={store}>
+            <App
+              {...props}
+              errors={3}
+              step={1}
+            />
+          </Provider>, {
+            createNodeMock: () => {
+              return {};
+            }
+          })
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`Render WinScreen`, () => {
+    const store = mockStore({
+      mistakes: 3,
+    });
+
+    const tree = renderer
+      .create(
+          <Provider store={store}>
+            <App
+              {...props}
+              errors={0}
+              step={3}
             />
           </Provider>, {
             createNodeMock: () => {

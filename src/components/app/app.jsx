@@ -5,12 +5,15 @@ import {connect} from "react-redux";
 import {ActionCreator} from "../../redux/reducer.js";
 import ArtistQuestionScreen from "../artist-question-screen/artist-question-screen.jsx";
 import GameScreen from "../game-screen/game-screen.jsx";
+import GameOverScreen from "../game-over-screen/game-over-screen.jsx";
+import WinScreen from "../win-screen/win-screen.jsx";
 import {GameType} from "../../constants/game";
 import GenreQuestionScreen from "../genre-question-screen/genre-question-screen.jsx";
 import WelcomeScreen from "../welcome-screen/welcome-screen.jsx";
 import withActivePlayer from "../../hocks/with-player-audio/with-player-audio.jsx";
+import withUserAnswer from "../../hocks/with-user-answer/with-user-unswer.jsx";
 
-const GenreQuestionScreenWrapped = withActivePlayer(GenreQuestionScreen);
+const GenreQuestionScreenWrapped = withActivePlayer(withUserAnswer(GenreQuestionScreen));
 const ArtistQuestionScreenWrapped = withActivePlayer(ArtistQuestionScreen);
 
 class App extends PureComponent {
@@ -40,15 +43,33 @@ class App extends PureComponent {
   }
 
   _renderGameScreen() {
-    const {errorsCount, questions, step, onWelcomeButtonClick, onUserAnswer} = this.props;
+    const {errorsCount, errors, questions, step, onWelcomeButtonClick, onUserAnswer} = this.props;
 
     const question = questions[step];
 
-    if (step === -1 || step >= questions.length) {
+    if (step === -1) {
       return (
         <WelcomeScreen
           errorsCount={errorsCount}
           onWelcomeButtonClick={onWelcomeButtonClick}
+        />
+      );
+    }
+
+    if (errors >= errorsCount) {
+      return (
+        <GameOverScreen
+          onReplayButtonClick={() => {}}
+        />
+      );
+    }
+
+    if (step >= questions.length) {
+      return (
+        <WinScreen
+          questionsCount={questions.length}
+          mistakesCount={errors}
+          onReplayButtonClick={() => {}}
         />
       );
     }
@@ -82,6 +103,7 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
+  errors: PropTypes.number.isRequired,
   errorsCount: PropTypes.number.isRequired,
   questions: PropTypes.array.isRequired,
   onUserAnswer: PropTypes.func.isRequired,
@@ -94,6 +116,7 @@ const mapStateToProps = (state) => ({
   step: state.step,
   questions: state.questions,
   errorsCount: state.maxMistakes,
+  errors: state.errors,
 });
 
 const mapDispatchToProps = (dispatch) => ({
