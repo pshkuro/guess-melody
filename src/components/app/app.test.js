@@ -54,6 +54,7 @@ const props = {
   onUserAnswer: jest.fn(),
   onWelcomeButtonClick: jest.fn,
   errors: 0,
+  resetGame: jest.fn(),
 };
 
 

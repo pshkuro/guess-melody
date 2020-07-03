@@ -80,7 +80,7 @@ exports[`Render App Render GameOverScreen 1`] = `
   </p>
   <button
     className="replay"
-    onClick={[Function]}
+    onClick={[MockFunction]}
     type="button"
   >
     Попробовать ещё раз
@@ -388,7 +388,7 @@ exports[`Render App Render WinScreen 1`] = `
   </p>
   <button
     className="replay"
-    onClick={[Function]}
+    onClick={[MockFunction]}
     type="button"
   >
     Сыграть ещё раз

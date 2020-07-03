@@ -43,7 +43,7 @@ class App extends PureComponent {
   }
 
   _renderGameScreen() {
-    const {errorsCount, errors, questions, step, onWelcomeButtonClick, onUserAnswer} = this.props;
+    const {errorsCount, errors, questions, step, onWelcomeButtonClick, onUserAnswer, resetGame} = this.props;
 
     const question = questions[step];
 
@@ -59,7 +59,7 @@ class App extends PureComponent {
     if (errors >= errorsCount) {
       return (
         <GameOverScreen
-          onReplayButtonClick={() => {}}
+          onReplayButtonClick={resetGame}
         />
       );
     }
@@ -69,7 +69,7 @@ class App extends PureComponent {
         <WinScreen
           questionsCount={questions.length}
           mistakesCount={errors}
-          onReplayButtonClick={() => {}}
+          onReplayButtonClick={resetGame}
         />
       );
     }
@@ -109,6 +109,7 @@ App.propTypes = {
   onUserAnswer: PropTypes.func.isRequired,
   onWelcomeButtonClick: PropTypes.func.isRequired,
   step: PropTypes.number.isRequired,
+  resetGame: PropTypes.func.isRequired,
 };
 
 // App will be notyfied when step update and get it value
@@ -116,7 +117,7 @@ const mapStateToProps = (state) => ({
   step: state.step,
   questions: state.questions,
   errorsCount: state.maxMistakes,
-  errors: state.errors,
+  errors: state.mistakes,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -126,6 +127,9 @@ const mapDispatchToProps = (dispatch) => ({
   onUserAnswer(question, answer) {
     dispatch(ActionCreator.incrementMistake(question, answer));
     dispatch(ActionCreator.incrementStep());
+  },
+  resetGame() {
+    dispatch(ActionCreator.resetGame());
   },
 });
 
