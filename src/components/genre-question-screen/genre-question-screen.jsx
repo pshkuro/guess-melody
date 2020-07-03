@@ -4,19 +4,11 @@ import React, {PureComponent} from "react";
 
 
 export default class GenreQuestionScreen extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      answers: [false, false, false, false],
-    };
-  }
 
 
   render() {
-    const {onAnswer, question, renderPlayer} = this.props;
+    const {onAnswer, onChange, question, renderPlayer, userAnswers} = this.props;
     const {genre, answers} = question;
-    const {answers: userAnsewrs} = this.state;
 
     return (
       <section className="game__screen">
@@ -25,7 +17,7 @@ export default class GenreQuestionScreen extends PureComponent {
           className="game__tracks"
           onSubmit={(evt) => {
             evt.preventDefault();
-            onAnswer(question, this.state.answers);
+            onAnswer();
           }}>
 
           {answers.map((answer, i) => (
@@ -39,9 +31,13 @@ export default class GenreQuestionScreen extends PureComponent {
                   name="answer"
                   value={`answer-${answer.id}`}
                   id={`answer-${answer.id}`}
-                  checked={userAnsewrs[i]}
+                  checked={userAnswers[i]}
                   onChange={(evt) => {
-                    this._onChange(evt, i);
+                    const value = evt.target.checked;
+
+                    this.setState({
+                      answers: [...userAnswers.slice(0, i), value, ...userAnswers.slice(i + 1)],
+                    });
                   }}/>
                 <label className="game__check" htmlFor={`answer-${answer.id}`}>Отметить</label>
               </div>
@@ -54,19 +50,11 @@ export default class GenreQuestionScreen extends PureComponent {
     );
   }
 
-  _onChange(evt, i) {
-    const {answers: userAnsewrs} = this.state;
-    const value = evt.target.checked;
-
-    this.setState({
-      answers: [...userAnsewrs.slice(0, i), value, ...userAnsewrs.slice(i + 1)],
-    });
-  }
-
 }
 
 GenreQuestionScreen.propTypes = {
   onAnswer: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
   question: PropTypes.shape({
     answers: PropTypes.arrayOf(
         PropTypes.shape({
@@ -79,5 +67,6 @@ GenreQuestionScreen.propTypes = {
     type: PropTypes.oneOf([GameType.ARTIST, GameType.GENRE]),
   }).isRequired,
   renderPlayer: PropTypes.func.isRequired,
+  userAnswers: PropTypes.arrayOf(PropTypes.bool).isRequired,
 };
 

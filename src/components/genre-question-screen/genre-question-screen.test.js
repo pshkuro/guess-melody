@@ -35,6 +35,8 @@ it(`Render GenreQuestionScreen`, () => {
         onAnswer={onAnswerMock}
         question={question}
         renderPlayer={onRenderPlayerMock}
+        onChange={() => {}}
+        userAnswers={[false, false, false, false]}
       />,
       {createNodeMock: () => {
         return {};

@@ -37,12 +37,15 @@ describe(`GenreQuestionScreen`, () => {
     const {question} = mock;
     const onAnswer = jest.fn();
     const renderPlayer = jest.fn();
+    const onChange = jest.fn();
 
     const genreQuestion = shallow(
         <GenreQuestionScreen
           question={question}
           onAnswer={onAnswer}
           renderPlayer={renderPlayer}
+          userAnswers={[false, false, false, false]}
+          onChange={onChange}
         />
     );
 
@@ -61,13 +64,16 @@ describe(`GenreQuestionScreen`, () => {
     const {question} = mock;
     const userAnswer = [false, true, false, false];
     const onAnswer = jest.fn((...args) => [...args]);
+    const onChange = jest.fn();
     const renderPlayer = jest.fn();
 
     const genreQuestion = shallow(
         <GenreQuestionScreen
           question={question}
           onAnswer={onAnswer}
-          renderPlayer={renderPlayer}/>
+          renderPlayer={renderPlayer}
+          onChange={onChange}
+          userAnswers={userAnswer}/>
     );
 
     const form = genreQuestion.find(`form`);
@@ -80,8 +86,7 @@ describe(`GenreQuestionScreen`, () => {
 
     expect(onAnswer).toHaveBeenCalledTimes(1);
     // transmitted data have true structure
-    expect(onAnswer.mock.calls[0][0]).toMatchObject(question);
-    expect(onAnswer.mock.calls[0][1]).toMatchObject(userAnswer);
+    expect(onAnswer.mock.calls[0][0]).toEqual(void 0);
 
     expect(
         genreQuestion.find(`input`).map((it) => it.prop(`checked`))
