@@ -6,12 +6,15 @@ const props = {
   isPlaying: false,
   src: `https://upload.wikimedia.org/wikipedia/commons/1/1f/Uganda_flag_and_national_anthem_-_Oh_Uganda_Land_o.ogg`,
   onPlayButtonClick: jest.fn(),
+  isLoading: true,
 };
 
 it(`AudioPlayer render`, () => {
   const tree = renderer
   .create(
-      <AudioPlayer {...props}/>,
+      <AudioPlayer {...props}>
+        <audio/>
+      </AudioPlayer>,
       {
         createNodeMock: () => {
           return {};
