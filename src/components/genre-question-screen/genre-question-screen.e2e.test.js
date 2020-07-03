@@ -1,4 +1,4 @@
-import {shallow} from "enzyme";
+import {mount} from "enzyme";
 import React from "react";
 import GenreQuestionScreen from "./genre-question-screen.jsx";
 
@@ -39,7 +39,7 @@ describe(`GenreQuestionScreen`, () => {
     const renderPlayer = jest.fn();
     const onChange = jest.fn();
 
-    const genreQuestion = shallow(
+    const genreQuestion = mount(
         <GenreQuestionScreen
           question={question}
           onAnswer={onAnswer}
@@ -67,7 +67,7 @@ describe(`GenreQuestionScreen`, () => {
     const onChange = jest.fn();
     const renderPlayer = jest.fn();
 
-    const genreQuestion = shallow(
+    const genreQuestion = mount(
         <GenreQuestionScreen
           question={question}
           onAnswer={onAnswer}
