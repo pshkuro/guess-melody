@@ -24,15 +24,15 @@ exports[`Render GenreQuestionScreen 1`] = `
         <input
           checked={false}
           className="game__input visually-hidden"
-          id="answer-11"
+          id="answer-0"
           name="answer"
           onChange={[Function]}
           type="checkbox"
-          value="answer-11"
+          value="answer-0"
         />
         <label
           className="game__check"
-          htmlFor="answer-11"
+          htmlFor="answer-0"
         >
           Отметить
         </label>
@@ -47,15 +47,15 @@ exports[`Render GenreQuestionScreen 1`] = `
         <input
           checked={false}
           className="game__input visually-hidden"
-          id="answer-33"
+          id="answer-1"
           name="answer"
           onChange={[Function]}
           type="checkbox"
-          value="answer-33"
+          value="answer-1"
         />
         <label
           className="game__check"
-          htmlFor="answer-33"
+          htmlFor="answer-1"
         >
           Отметить
         </label>
@@ -70,15 +70,15 @@ exports[`Render GenreQuestionScreen 1`] = `
         <input
           checked={false}
           className="game__input visually-hidden"
-          id="answer-89"
+          id="answer-2"
           name="answer"
           onChange={[Function]}
           type="checkbox"
-          value="answer-89"
+          value="answer-2"
         />
         <label
           className="game__check"
-          htmlFor="answer-89"
+          htmlFor="answer-2"
         >
           Отметить
         </label>
@@ -93,15 +93,15 @@ exports[`Render GenreQuestionScreen 1`] = `
         <input
           checked={false}
           className="game__input visually-hidden"
-          id="answer-12"
+          id="answer-3"
           name="answer"
           onChange={[Function]}
           type="checkbox"
-          value="answer-12"
+          value="answer-3"
         />
         <label
           className="game__check"
-          htmlFor="answer-12"
+          htmlFor="answer-3"
         >
           Отметить
         </label>

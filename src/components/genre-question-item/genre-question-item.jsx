@@ -5,7 +5,11 @@ import PropTypes from "prop-types";
 class GenreQuestionItem extends PureComponent {
   render() {
     const {answer, id, onChange, renderPlayer, userAnswer} = this.props;
+    const handleChange = (evt, checkedId) => {
+      const value = evt.target.checked;
 
+      onChange(checkedId, value);
+    };
     return (
       <div className="track">
         {renderPlayer(answer.src, id)}
@@ -13,11 +17,7 @@ class GenreQuestionItem extends PureComponent {
           <input className="game__input visually-hidden" type="checkbox" name="answer" value={`answer-${id}`}
             id={`answer-${id}`}
             checked={userAnswer}
-            onChange={(evt) => {
-              const value = evt.target.checked;
-
-              onChange(id, value);
-            }}
+            onChange={(evt) => handleChange(evt, id)}
           />
           <label className="game__check" htmlFor={`answer-${id}`}>Отметить</label>
         </div>

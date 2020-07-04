@@ -26,7 +26,7 @@ it(`withAudio is rendered correctly`, () => {
   const tree = renderer.create((
     <MockComponentWrapped
       isPlaying={false}
-      onPlayButtonClick={() => {}}
+      onPlayButtonClick={jest.fn()}
       src={``}
     />
   ), {

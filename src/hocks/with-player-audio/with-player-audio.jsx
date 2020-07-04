@@ -17,6 +17,7 @@ export default function withActivePlayer(Component) {
 
     render() {
       const {activePlayerId} = this.state;
+
       return <Component
         {...this.props}
         renderPlayer={(src, id) => {
@@ -24,13 +25,18 @@ export default function withActivePlayer(Component) {
             <AudioPlayerWrapped
               src={src}
               isPlaying={id === activePlayerId}
-              onPlayButtonClick={() => this.setState({
-                activePlayerId: activePlayerId === id ? -1 : id
-              })}
+              onPlayButtonClick={() => this._handlePlayButton(id)}
             />
           );
         }}
       />;
+    }
+
+    _handlePlayButton(checkedId) {
+      const {activePlayerId} = this.state;
+      this.setState({
+        activePlayerId: activePlayerId === checkedId ? -1 : checkedId
+      });
     }
   }
 

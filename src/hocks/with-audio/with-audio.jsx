@@ -65,21 +65,23 @@ function withAudio(Component) {
 
     render() {
       const {isPlaying, isLoading} = this.state;
-      const {onPlayButtonClick} = this.props;
 
       return (
         <Component
           {...this.props}
           isLoading={isLoading}
           isPlaying={isPlaying}
-          onPlayButtonClick={() => {
-            this.setState({isPlaying: !this.state.isPlaying});
-            onPlayButtonClick();
-          }}
+          onPlayButtonClick={() => this._handlePlayButton()}
         >
           <audio ref={this._audioRef}/>
         </Component>
       );
+    }
+
+    _handlePlayButton() {
+      const {onPlayButtonClick} = this.props;
+      this.setState({isPlaying: !this.state.isPlaying});
+      onPlayButtonClick();
     }
   }
 
@@ -90,6 +92,7 @@ function withAudio(Component) {
   };
 
   return WithAudio;
+
 }
 
 export default withAudio;
